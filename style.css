@@ -1,0 +1,271 @@
+body {
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.hidden {
+    display: none;
+}
+
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.backgroundImage {
+    position: fixed;
+    z-index: -1;
+    opacity: 1.8;
+    width: 100vw;
+}
+
+main {
+    width: 95vw;
+    max-width: 1000px;
+    z-index: 99;
+    padding: 0 1vw;
+}
+
+.searchContainer {
+    display: inline-block;
+}
+
+form {
+    margin-top: 1.5vw;
+    background-color: #5e95d4;
+    position: relative;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+form svg {
+    pointer-events: none;
+    position: absolute;
+    top: 6px;
+    left: 2px;
+    opacity: 0.7;
+}
+
+input {
+    color: rgba(255, 255, 255, 0.9);
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    transition: background-color 0.3s ease-out, width 0.5s ease-in-out;
+    background-color: #5e95d4;
+    padding: 10px 30px;
+    width: 30vw;
+    height: 20px;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+}
+
+input:focus {
+    width: 50vw;
+}
+
+
+
+::placeholder {
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    opacity: 1;
+}
+
+.searchRowsContainer {
+    width: calc(50vw + 60px);
+    display: table;
+    text-align: center;
+}
+
+.searchRow {
+    flex-wrap: nowrap;
+    padding: 0 1.6vw;
+
+}
+
+.searchRow:hover {
+    background-color: #478fe2;
+}
+
+.searchRow div {
+    padding: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 14.5vw;
+}
+
+.cDegree {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 3vw;
+    height: 8vw;
+    margin: auto 0;
+}
+
+h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 8vw;
+}
+
+.icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.currentWeather {
+    font-size: 2vw;
+    margin: auto 0;
+    padding-top: 4vw;
+}
+
+.weather {
+    padding: 3vw 0;
+    align-content: center;
+    border-bottom: 1px solid white;
+    user-select: none;
+    cursor: pointer;
+    flex: 1 1;
+}
+
+.weather.selected {
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    border-bottom: none;
+}
+
+h3 {
+    font-weight: 400;
+    font-size: 3vw;
+    text-align: center;
+    margin: 0;
+}
+
+h4 {
+    margin: 0;
+    padding: 0 0.6vw;
+    text-align: center;
+    font-weight: 300;
+    font-size: 1.5vw;
+}
+
+.icon svg {
+    width: 10vw;
+    height: 10vw;
+}
+
+.maxTemperature,
+.minTemperature {
+    font-weight: 400;
+    margin: 0;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.currentWeatherContainer {
+    padding: 2vw;
+}
+
+.currentWeatherColumn {
+    flex: 1 1;
+    text-align: center;
+}
+
+.weatherDetails {
+    padding: 1vw 1vw 0 1vw;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    overflow: auto;
+    max-width: 1000px;
+}
+
+.currentWeatherColumn {
+    min-width: 80px;
+}
+
+.weatherDetail {
+    padding: 0 0 1.8vw 0;
+}
+
+h2.day {
+    padding: 1vw 4vw 0 0;
+    font-size: 3vw;
+}
+
+.hourDetail {
+    flex: 1 1;
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.parameterIcons {
+    padding-top: 48px;
+}
+
+.parameters {
+    padding: 0 0 0 1vw;
+}
+footer {
+	font-size: 12px;
+	padding: 16px 0;
+}
+
+@media only screen and (max-width: 600px) {
+
+    h1 {
+        font-weight: 300;
+        font-size: 8vw;
+    }
+
+    .cDegree {
+        font-size: 22px;
+    }
+
+    .currentWeather {
+        font-size: 12px;
+        padding-left: 14px;
+    }
+
+    .weather {
+        font-size: 20px;
+        padding: 1vw 0;
+    }
+
+
+    .icon svg {
+        width: 13.5vw;
+        height: 13.5vw;
+    }
+
+    .maxTemperature,
+    .minTemperature {
+        font-size: 13px;
+    }
+
+    h2.day {
+        font-size: 4vw;
+        margin-bottom: 0;
+    }
+
+    .hourDetail {
+        padding-bottom: 16px;
+    }
+
+}

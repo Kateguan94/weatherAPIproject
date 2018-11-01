@@ -1,0 +1,3483 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="https://unpkg.com/jquery/dist/jquery.min.js" defer></script>
+    <script type="text/javascript" src="app.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Raleway:300,400,500" rel="stylesheet">
+    <title>Get your Weather</title>
+</head>
+
+<body>
+    <div class="backgroundImage">
+        <img src="https://jadeexploringmedia.files.wordpress.com/2014/08/sky-images18-blue-sky-textures-outside-the-fray-fjpytp8o.jpg">
+	</div>
+        <main>
+            <div class="searchContainer">
+                <form>
+                    <svg height="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                        <path d="M19.4 21.4a8.5 8.5 0 1 1 2-2L27 25c.6.6.6 1.4 0 2-.6.6-1.4.6-2 0l-5.6-5.6zm-4.9-.4a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13z" fill="#ffffff" fill-rule="evenodd" />
+                    </svg>
+                    <input type="text" placeholder="Search City, Country..">
+                </form>
+                <div class="searchRowsContainer">
+                    <div class="searchRow flex-row">
+                        <div class="area"></div>
+                        <div class="state"></div>
+                        <div class="country"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-row">
+                <h1>14</h1>
+                <div class="cDegree">&#x2103;</div>
+                <div class="currentWeather">Clear and few clouds</div>
+            </div>
+            <div class="flex-row dayWeatherContainer" onclick="showWeatherDetails(event.target)">
+                <div class="weather flex-column">
+                    <h3>Thu</h3>
+                    <h4>Today</h4>
+                    <!-- CC BY 4.0 amCharts https://creativecommons.org/licenses/by/4.0/-->
+                    <div class="icon">
+                        <?xml version="1.0" encoding="utf-8"?>
+                        <!-- (c) ammap.com | SVG weather icons -->
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="8vw" height="6vw" viewBox="12 10 36 36">
+                            <defs>
+                                <filter id="blur" width="200%" height="200%">
+                                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                                    <feOffset dx="0" dy="4" result="offsetblur" />
+                                    <feComponentTransfer>
+                                        <feFuncA type="linear" slope="0.05" />
+                                    </feComponentTransfer>
+                                    <feMerge>
+                                        <feMergeNode />
+                                        <feMergeNode in="SourceGraphic" />
+                                    </feMerge>
+                                </filter>
+                                <style type="text/css">
+                                @keyframes am-weather-cloud-2 {
+                                    0% {
+                                        transform: translate(0px, 0px);
+                                    }
+
+                                    50% {
+                                        transform: translate(2px, 0px);
+                                    }
+
+                                    100% {
+                                        transform: translate(0px, 0px);
+                                    }
+                                }
+
+                                .am-weather-cloud-2 {
+                                    animation-name: am-weather-cloud-2;
+                                    animation-duration: 3s;
+                                    animation-timing-function: linear;
+                                    animation-iteration-count: infinite;
+                                }
+
+                                @keyframes am-weather-sun {
+                                    0% {
+                                        transform: rotate(0deg);
+                                    }
+
+                                    100% {
+                                        transform: rotate(360deg);
+                                    }
+                                }
+
+                                .am-weather-sun {
+                                    animation-name: am-weather-sun;
+                                    animation-duration: 9s;
+                                    animation-timing-function: linear;
+                                    animation-iteration-count: infinite;
+                                }
+
+                                @keyframes am-weather-sun-shiny {
+                                    0% {
+                                        stroke-dasharray: 3px 10px;
+                                        stroke-dashoffset: 0px;
+                                    }
+
+                                    50% {
+                                        stroke-dasharray: 0.1px 10px;
+                                        stroke-dashoffset: -1px;
+                                    }
+
+                                    100% {
+                                        stroke-dasharray: 3px 10px;
+                                        stroke-dashoffset: 0px;
+                                    }
+                                }
+
+                                .am-weather-sun-shiny line {
+                                    animation-name: am-weather-sun-shiny;
+                                    animation-duration: 2s;
+                                    animation-timing-function: linear;
+                                    animation-iteration-count: infinite;
+                                }
+                                </style>
+                            </defs>
+                            <g filter="url(#blur)" id="cloudy-day-1">
+                                <g transform="translate(20,10)">
+                                    <g transform="translate(0,16)">
+                                        <g class="am-weather-sun">
+                                            <g>
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(45)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(90)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(135)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(180)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(225)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(270)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(315)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                        </g>
+                                        <circle cx="0" cy="0" fill="orange" r="5" stroke="orange" stroke-width="2" />
+                                    </g>
+                                    <g class="am-weather-cloud-2">
+                                        <path d="M47.7,35.4c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3    c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z" fill="#C6DEFF" stroke="white" stroke-linejoin="round" stroke-width="1.2" transform="translate(-20,-11)" />
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="minTemperature">5</div>
+                    <div class="maxTemperature">14</div>
+                </div>
+                <div class="weather flex-column">
+                    <h3>Thu</h3>
+                    <h4>Today</h4>
+                    <!-- CC BY 4.0 amCharts https://creativecommons.org/licenses/by/4.0/-->
+                    <div class="icon">
+                        <?xml version="1.0" encoding="utf-8"?>
+                        <!-- (c) ammap.com | SVG weather icons -->
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="8vw" height="6vw" viewBox="12 10 36 36">
+                            <defs>
+                                <filter id="blur" width="200%" height="200%">
+                                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                                    <feOffset dx="0" dy="4" result="offsetblur" />
+                                    <feComponentTransfer>
+                                        <feFuncA type="linear" slope="0.05" />
+                                    </feComponentTransfer>
+                                    <feMerge>
+                                        <feMergeNode />
+                                        <feMergeNode in="SourceGraphic" />
+                                    </feMerge>
+                                </filter>
+                                <style type="text/css">
+                                @keyframes am-weather-cloud-2 {
+                                    0% {
+                                        transform: translate(0px, 0px);
+                                    }
+
+                                    50% {
+                                        transform: translate(2px, 0px);
+                                    }
+
+                                    100% {
+                                        transform: translate(0px, 0px);
+                                    }
+                                }
+
+                                .am-weather-cloud-2 {
+                                    animation-name: am-weather-cloud-2;
+                                    animation-duration: 3s;
+                                    animation-timing-function: linear;
+                                    animation-iteration-count: infinite;
+                                }
+
+                                @keyframes am-weather-sun {
+                                    0% {
+                                        transform: rotate(0deg);
+                                    }
+
+                                    100% {
+                                        transform: rotate(360deg);
+                                    }
+                                }
+
+                                .am-weather-sun {
+                                    animation-name: am-weather-sun;
+                                    animation-duration: 9s;
+                                    animation-timing-function: linear;
+                                    animation-iteration-count: infinite;
+                                }
+
+                                @keyframes am-weather-sun-shiny {
+                                    0% {
+                                        stroke-dasharray: 3px 10px;
+                                        stroke-dashoffset: 0px;
+                                    }
+
+                                    50% {
+                                        stroke-dasharray: 0.1px 10px;
+                                        stroke-dashoffset: -1px;
+                                    }
+
+                                    100% {
+                                        stroke-dasharray: 3px 10px;
+                                        stroke-dashoffset: 0px;
+                                    }
+                                }
+
+                                .am-weather-sun-shiny line {
+                                    animation-name: am-weather-sun-shiny;
+                                    animation-duration: 2s;
+                                    animation-timing-function: linear;
+                                    animation-iteration-count: infinite;
+                                }
+                                </style>
+                            </defs>
+                            <g filter="url(#blur)" id="cloudy-day-1">
+                                <g transform="translate(20,10)">
+                                    <g transform="translate(0,16)">
+                                        <g class="am-weather-sun">
+                                            <g>
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(45)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(90)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(135)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(180)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(225)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(270)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(315)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                        </g>
+                                        <circle cx="0" cy="0" fill="orange" r="5" stroke="orange" stroke-width="2" />
+                                    </g>
+                                    <g class="am-weather-cloud-2">
+                                        <path d="M47.7,35.4c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3    c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z" fill="#C6DEFF" stroke="white" stroke-linejoin="round" stroke-width="1.2" transform="translate(-20,-11)" />
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="minTemperature">5</div>
+                    <div class="maxTemperature">14</div>
+                </div>
+                <div class="weather flex-column">
+                    <h3>Thu</h3>
+                    <h4>Today</h4>
+                    <!-- CC BY 4.0 amCharts https://creativecommons.org/licenses/by/4.0/-->
+                    <div class="icon">
+                        <?xml version="1.0" encoding="utf-8"?>
+                        <!-- (c) ammap.com | SVG weather icons -->
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="8vw" height="6vw" viewBox="12 10 36 36">
+                            <defs>
+                                <filter id="blur" width="200%" height="200%">
+                                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                                    <feOffset dx="0" dy="4" result="offsetblur" />
+                                    <feComponentTransfer>
+                                        <feFuncA type="linear" slope="0.05" />
+                                    </feComponentTransfer>
+                                    <feMerge>
+                                        <feMergeNode />
+                                        <feMergeNode in="SourceGraphic" />
+                                    </feMerge>
+                                </filter>
+                                <style type="text/css">
+                                @keyframes am-weather-cloud-2 {
+                                    0% {
+                                        transform: translate(0px, 0px);
+                                    }
+
+                                    50% {
+                                        transform: translate(2px, 0px);
+                                    }
+
+                                    100% {
+                                        transform: translate(0px, 0px);
+                                    }
+                                }
+
+                                .am-weather-cloud-2 {
+                                    animation-name: am-weather-cloud-2;
+                                    animation-duration: 3s;
+                                    animation-timing-function: linear;
+                                    animation-iteration-count: infinite;
+                                }
+
+                                @keyframes am-weather-sun {
+                                    0% {
+                                        transform: rotate(0deg);
+                                    }
+
+                                    100% {
+                                        transform: rotate(360deg);
+                                    }
+                                }
+
+                                .am-weather-sun {
+                                    animation-name: am-weather-sun;
+                                    animation-duration: 9s;
+                                    animation-timing-function: linear;
+                                    animation-iteration-count: infinite;
+                                }
+
+                                @keyframes am-weather-sun-shiny {
+                                    0% {
+                                        stroke-dasharray: 3px 10px;
+                                        stroke-dashoffset: 0px;
+                                    }
+
+                                    50% {
+                                        stroke-dasharray: 0.1px 10px;
+                                        stroke-dashoffset: -1px;
+                                    }
+
+                                    100% {
+                                        stroke-dasharray: 3px 10px;
+                                        stroke-dashoffset: 0px;
+                                    }
+                                }
+
+                                .am-weather-sun-shiny line {
+                                    animation-name: am-weather-sun-shiny;
+                                    animation-duration: 2s;
+                                    animation-timing-function: linear;
+                                    animation-iteration-count: infinite;
+                                }
+                                </style>
+                            </defs>
+                            <g filter="url(#blur)" id="cloudy-day-1">
+                                <g transform="translate(20,10)">
+                                    <g transform="translate(0,16)">
+                                        <g class="am-weather-sun">
+                                            <g>
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(45)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(90)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(135)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(180)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(225)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(270)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(315)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                        </g>
+                                        <circle cx="0" cy="0" fill="orange" r="5" stroke="orange" stroke-width="2" />
+                                    </g>
+                                    <g class="am-weather-cloud-2">
+                                        <path d="M47.7,35.4c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3    c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z" fill="#C6DEFF" stroke="white" stroke-linejoin="round" stroke-width="1.2" transform="translate(-20,-11)" />
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="minTemperature">5</div>
+                    <div class="maxTemperature">14</div>
+                </div>
+                <div class="weather flex-column">
+                    <h3>Thu</h3>
+                    <h4>Today</h4>
+                    <!-- CC BY 4.0 amCharts https://creativecommons.org/licenses/by/4.0/-->
+                    <div class="icon">
+                        <?xml version="1.0" encoding="utf-8"?>
+                        <!-- (c) ammap.com | SVG weather icons -->
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="8vw" height="6vw" viewBox="12 10 36 36">
+                            <defs>
+                                <filter id="blur" width="200%" height="200%">
+                                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                                    <feOffset dx="0" dy="4" result="offsetblur" />
+                                    <feComponentTransfer>
+                                        <feFuncA type="linear" slope="0.05" />
+                                    </feComponentTransfer>
+                                    <feMerge>
+                                        <feMergeNode />
+                                        <feMergeNode in="SourceGraphic" />
+                                    </feMerge>
+                                </filter>
+                                <style type="text/css">
+                                @keyframes am-weather-cloud-2 {
+                                    0% {
+                                        transform: translate(0px, 0px);
+                                    }
+
+                                    50% {
+                                        transform: translate(2px, 0px);
+                                    }
+
+                                    100% {
+                                        transform: translate(0px, 0px);
+                                    }
+                                }
+
+                                .am-weather-cloud-2 {
+                                    animation-name: am-weather-cloud-2;
+                                    animation-duration: 3s;
+                                    animation-timing-function: linear;
+                                    animation-iteration-count: infinite;
+                                }
+
+                                @keyframes am-weather-sun {
+                                    0% {
+                                        transform: rotate(0deg);
+                                    }
+
+                                    100% {
+                                        transform: rotate(360deg);
+                                    }
+                                }
+
+                                .am-weather-sun {
+                                    animation-name: am-weather-sun;
+                                    animation-duration: 9s;
+                                    animation-timing-function: linear;
+                                    animation-iteration-count: infinite;
+                                }
+
+                                @keyframes am-weather-sun-shiny {
+                                    0% {
+                                        stroke-dasharray: 3px 10px;
+                                        stroke-dashoffset: 0px;
+                                    }
+
+                                    50% {
+                                        stroke-dasharray: 0.1px 10px;
+                                        stroke-dashoffset: -1px;
+                                    }
+
+                                    100% {
+                                        stroke-dasharray: 3px 10px;
+                                        stroke-dashoffset: 0px;
+                                    }
+                                }
+
+                                .am-weather-sun-shiny line {
+                                    animation-name: am-weather-sun-shiny;
+                                    animation-duration: 2s;
+                                    animation-timing-function: linear;
+                                    animation-iteration-count: infinite;
+                                }
+                                </style>
+                            </defs>
+                            <g filter="url(#blur)" id="cloudy-day-1">
+                                <g transform="translate(20,10)">
+                                    <g transform="translate(0,16)">
+                                        <g class="am-weather-sun">
+                                            <g>
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(45)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(90)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(135)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(180)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(225)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(270)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(315)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                        </g>
+                                        <circle cx="0" cy="0" fill="orange" r="5" stroke="orange" stroke-width="2" />
+                                    </g>
+                                    <g class="am-weather-cloud-2">
+                                        <path d="M47.7,35.4c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3    c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z" fill="#C6DEFF" stroke="white" stroke-linejoin="round" stroke-width="1.2" transform="translate(-20,-11)" />
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="minTemperature">5</div>
+                    <div class="maxTemperature">14</div>
+                </div>
+                <div class="weather flex-column">
+                    <h3>Thu</h3>
+                    <h4>Today</h4>
+                    <!-- CC BY 4.0 amCharts https://creativecommons.org/licenses/by/4.0/-->
+                    <div class="icon">
+                        <?xml version="1.0" encoding="utf-8"?>
+                        <!-- (c) ammap.com | SVG weather icons -->
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="8vw" height="6vw" viewBox="12 10 36 36">
+                            <defs>
+                                <filter id="blur" width="200%" height="200%">
+                                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                                    <feOffset dx="0" dy="4" result="offsetblur" />
+                                    <feComponentTransfer>
+                                        <feFuncA type="linear" slope="0.05" />
+                                    </feComponentTransfer>
+                                    <feMerge>
+                                        <feMergeNode />
+                                        <feMergeNode in="SourceGraphic" />
+                                    </feMerge>
+                                </filter>
+                                <style type="text/css">
+                                @keyframes am-weather-cloud-2 {
+                                    0% {
+                                        transform: translate(0px, 0px);
+                                    }
+
+                                    50% {
+                                        transform: translate(2px, 0px);
+                                    }
+
+                                    100% {
+                                        transform: translate(0px, 0px);
+                                    }
+                                }
+
+                                .am-weather-cloud-2 {
+                                    animation-name: am-weather-cloud-2;
+                                    animation-duration: 3s;
+                                    animation-timing-function: linear;
+                                    animation-iteration-count: infinite;
+                                }
+
+                                @keyframes am-weather-sun {
+                                    0% {
+                                        transform: rotate(0deg);
+                                    }
+
+                                    100% {
+                                        transform: rotate(360deg);
+                                    }
+                                }
+
+                                .am-weather-sun {
+                                    animation-name: am-weather-sun;
+                                    animation-duration: 9s;
+                                    animation-timing-function: linear;
+                                    animation-iteration-count: infinite;
+                                }
+
+                                @keyframes am-weather-sun-shiny {
+                                    0% {
+                                        stroke-dasharray: 3px 10px;
+                                        stroke-dashoffset: 0px;
+                                    }
+
+                                    50% {
+                                        stroke-dasharray: 0.1px 10px;
+                                        stroke-dashoffset: -1px;
+                                    }
+
+                                    100% {
+                                        stroke-dasharray: 3px 10px;
+                                        stroke-dashoffset: 0px;
+                                    }
+                                }
+
+                                .am-weather-sun-shiny line {
+                                    animation-name: am-weather-sun-shiny;
+                                    animation-duration: 2s;
+                                    animation-timing-function: linear;
+                                    animation-iteration-count: infinite;
+                                }
+                                </style>
+                            </defs>
+                            <g filter="url(#blur)" id="cloudy-day-1">
+                                <g transform="translate(20,10)">
+                                    <g transform="translate(0,16)">
+                                        <g class="am-weather-sun">
+                                            <g>
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(45)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(90)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(135)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(180)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(225)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(270)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(315)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                        </g>
+                                        <circle cx="0" cy="0" fill="orange" r="5" stroke="orange" stroke-width="2" />
+                                    </g>
+                                    <g class="am-weather-cloud-2">
+                                        <path d="M47.7,35.4c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3    c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z" fill="#C6DEFF" stroke="white" stroke-linejoin="round" stroke-width="1.2" transform="translate(-20,-11)" />
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="minTemperature">5</div>
+                    <div class="maxTemperature">14</div>
+                </div>
+                <div class="weather flex-column">
+                    <h3>Thu</h3>
+                    <h4>Today</h4>
+                    <!-- CC BY 4.0 amCharts https://creativecommons.org/licenses/by/4.0/-->
+                    <div class="icon">
+                        <?xml version="1.0" encoding="utf-8"?>
+                        <!-- (c) ammap.com | SVG weather icons -->
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="8vw" height="6vw" viewBox="12 10 36 36">
+                            <defs>
+                                <filter id="blur" width="200%" height="200%">
+                                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                                    <feOffset dx="0" dy="4" result="offsetblur" />
+                                    <feComponentTransfer>
+                                        <feFuncA type="linear" slope="0.05" />
+                                    </feComponentTransfer>
+                                    <feMerge>
+                                        <feMergeNode />
+                                        <feMergeNode in="SourceGraphic" />
+                                    </feMerge>
+                                </filter>
+                                <style type="text/css">
+                                @keyframes am-weather-cloud-2 {
+                                    0% {
+                                        transform: translate(0px, 0px);
+                                    }
+
+                                    50% {
+                                        transform: translate(2px, 0px);
+                                    }
+
+                                    100% {
+                                        transform: translate(0px, 0px);
+                                    }
+                                }
+
+                                .am-weather-cloud-2 {
+                                    animation-name: am-weather-cloud-2;
+                                    animation-duration: 3s;
+                                    animation-timing-function: linear;
+                                    animation-iteration-count: infinite;
+                                }
+
+                                @keyframes am-weather-sun {
+                                    0% {
+                                        transform: rotate(0deg);
+                                    }
+
+                                    100% {
+                                        transform: rotate(360deg);
+                                    }
+                                }
+
+                                .am-weather-sun {
+                                    animation-name: am-weather-sun;
+                                    animation-duration: 9s;
+                                    animation-timing-function: linear;
+                                    animation-iteration-count: infinite;
+                                }
+
+                                @keyframes am-weather-sun-shiny {
+                                    0% {
+                                        stroke-dasharray: 3px 10px;
+                                        stroke-dashoffset: 0px;
+                                    }
+
+                                    50% {
+                                        stroke-dasharray: 0.1px 10px;
+                                        stroke-dashoffset: -1px;
+                                    }
+
+                                    100% {
+                                        stroke-dasharray: 3px 10px;
+                                        stroke-dashoffset: 0px;
+                                    }
+                                }
+
+                                .am-weather-sun-shiny line {
+                                    animation-name: am-weather-sun-shiny;
+                                    animation-duration: 2s;
+                                    animation-timing-function: linear;
+                                    animation-iteration-count: infinite;
+                                }
+                                </style>
+                            </defs>
+                            <g filter="url(#blur)" id="cloudy-day-1">
+                                <g transform="translate(20,10)">
+                                    <g transform="translate(0,16)">
+                                        <g class="am-weather-sun">
+                                            <g>
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(45)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(90)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(135)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(180)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(225)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(270)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(315)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                        </g>
+                                        <circle cx="0" cy="0" fill="orange" r="5" stroke="orange" stroke-width="2" />
+                                    </g>
+                                    <g class="am-weather-cloud-2">
+                                        <path d="M47.7,35.4c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3    c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z" fill="#C6DEFF" stroke="white" stroke-linejoin="round" stroke-width="1.2" transform="translate(-20,-11)" />
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="minTemperature">5</div>
+                    <div class="maxTemperature">14</div>
+                </div>
+                <div class="weather flex-column">
+                    <h3>Thu</h3>
+                    <h4>Today</h4>
+                    <!-- CC BY 4.0 amCharts https://creativecommons.org/licenses/by/4.0/-->
+                    <div class="icon">
+                        <?xml version="1.0" encoding="utf-8"?>
+                        <!-- (c) ammap.com | SVG weather icons -->
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="8vw" height="6vw" viewBox="12 10 36 36">
+                            <defs>
+                                <filter id="blur" width="200%" height="200%">
+                                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                                    <feOffset dx="0" dy="4" result="offsetblur" />
+                                    <feComponentTransfer>
+                                        <feFuncA type="linear" slope="0.05" />
+                                    </feComponentTransfer>
+                                    <feMerge>
+                                        <feMergeNode />
+                                        <feMergeNode in="SourceGraphic" />
+                                    </feMerge>
+                                </filter>
+                                <style type="text/css">
+                                @keyframes am-weather-cloud-2 {
+                                    0% {
+                                        transform: translate(0px, 0px);
+                                    }
+
+                                    50% {
+                                        transform: translate(2px, 0px);
+                                    }
+
+                                    100% {
+                                        transform: translate(0px, 0px);
+                                    }
+                                }
+
+                                .am-weather-cloud-2 {
+                                    animation-name: am-weather-cloud-2;
+                                    animation-duration: 3s;
+                                    animation-timing-function: linear;
+                                    animation-iteration-count: infinite;
+                                }
+
+                                @keyframes am-weather-sun {
+                                    0% {
+                                        transform: rotate(0deg);
+                                    }
+
+                                    100% {
+                                        transform: rotate(360deg);
+                                    }
+                                }
+
+                                .am-weather-sun {
+                                    animation-name: am-weather-sun;
+                                    animation-duration: 9s;
+                                    animation-timing-function: linear;
+                                    animation-iteration-count: infinite;
+                                }
+
+                                @keyframes am-weather-sun-shiny {
+                                    0% {
+                                        stroke-dasharray: 3px 10px;
+                                        stroke-dashoffset: 0px;
+                                    }
+
+                                    50% {
+                                        stroke-dasharray: 0.1px 10px;
+                                        stroke-dashoffset: -1px;
+                                    }
+
+                                    100% {
+                                        stroke-dasharray: 3px 10px;
+                                        stroke-dashoffset: 0px;
+                                    }
+                                }
+
+                                .am-weather-sun-shiny line {
+                                    animation-name: am-weather-sun-shiny;
+                                    animation-duration: 2s;
+                                    animation-timing-function: linear;
+                                    animation-iteration-count: infinite;
+                                }
+                                </style>
+                            </defs>
+                            <g filter="url(#blur)" id="cloudy-day-1">
+                                <g transform="translate(20,10)">
+                                    <g transform="translate(0,16)">
+                                        <g class="am-weather-sun">
+                                            <g>
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(45)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(90)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(135)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(180)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(225)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(270)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                            <g transform="rotate(315)">
+                                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                                            </g>
+                                        </g>
+                                        <circle cx="0" cy="0" fill="orange" r="5" stroke="orange" stroke-width="2" />
+                                    </g>
+                                    <g class="am-weather-cloud-2">
+                                        <path d="M47.7,35.4c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3    c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z" fill="#C6DEFF" stroke="white" stroke-linejoin="round" stroke-width="1.2" transform="translate(-20,-11)" />
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="minTemperature">5</div>
+                    <div class="maxTemperature">14</div>
+                </div>
+            </div>
+            <div class="currentWeatherContainer flex-column">
+                <h2 class="day">Thursday</h2>
+            </div>
+            <div class="weatherDetails flex-row">
+                <div class="parameterIcons flex-column">
+                    <div class="weatherDetail flex-row">
+                        <div class="parameterIcon">
+                            <!-- Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a> -->
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1" width="18" viewBox="0 0 229 229">
+                                <path d="M134 147h1V20a20 20 0 0 0-41 0v127h1a43 43 0 1 0 39 0zm-31 19c-1 1-17 10-10 30a5 5 0 0 1-10 3c-8-23 7-37 16-42a5 5 0 0 1 4 9zm21-109h-19V22a10 10 0 0 1 19 0v35z" fill="#ffffff" />
+                            </svg>
+                        </div>
+                        <div class="parameters">Temperature(&#x2103;)</div>
+                    </div>
+                    <div class="weatherDetail flex-row">
+                        <div class="parameterIcon">
+                            <svg width="18" version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 248 248">
+                                <path d="M134 9c-6-12-14-12-20 0-32 46-79 116-79 150a89 89 0 0 0 178 0c0-35-47-104-79-150zm54 190c-6 10-16 20-27 26-5 3-11 1-14-4-3-6-1-12 4-15a53 53 0 0 0 27-44c0-6 5-10 11-10 6 1 11 5 10 11-1 13-5 25-11 36z" fill="#ffffff" />
+                            </svg>
+                        </div>
+                        <div class="parameters">Humidity</div>
+                    </div>
+                    <div class="weatherDetail flex-row">
+                        <div class="parameterIcon">
+                            <!-- Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a> -->
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1" width="20" viewBox="0 0 512 512">
+                                <path d="M427 107c-47 0-86 38-86 85h43a43 43 0 1 1 43 43H128v42h299a85 85 0 0 0 0-170zM340 320H85v43h255c23 0 42 19 42 42v2c0 23-18 41-41 41v43c47 0 84-38 84-84v-2c0-47-38-85-85-85zM0 235h85v43H0z" fill="#ffffff" />
+                                <path d="M213 21c-46 0-84 38-84 84v6h43v-6a41 41 0 1 1 82 0v2c0 23-19 42-42 42H43v43h169c47 0 85-38 85-85v-2c0-46-38-84-84-84z" fill="#ffffff" />
+                            </svg>
+                        </div>
+                        <div class="parameters">Wind(km/h)</div>
+                    </div>
+                    <div class="weatherDetail flex-row">
+                        <div class="parameterIcon">
+                            <!-- Icons made by <a href="https://www.flaticon.com/authors/bogdan-rosu" title="Bogdan Rosu">Bogdan Rosu</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a> -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 51.62 51.62">
+                                <path d="M12.04 10.25c2 0 3.62-1.62 3.62-3.63 0-2.58-3.62-6.62-3.62-6.62S8.4 4.04 8.4 6.63c0 2 1.63 3.62 3.63 3.62zM5.6 4.04C5.6 2.46 3.39 0 3.39 0s-2.2 2.46-2.2 4.04a2.2 2.2 0 1 0 4.4 0z" fill="#ffffff" />
+                                <path d="M28.67 2.88v-.25c0-.96-.8-1.74-1.77-1.74-.98 0-1.78.78-1.78 1.74v.25c-2.75.21-5.35.91-7.76 1.98a5.63 5.63 0 0 1-8.49 6.41A23.4 23.4 0 0 0 3.4 26.1a5.88 5.88 0 0 1 11.75.12 5.88 5.88 0 0 1 9.18-4.86v23.37c0 3.74 3 6.8 6.72 6.89h.17a6.9 6.9 0 0 0 6.72-6.9 2.5 2.5 0 1 0-5 0 1.9 1.9 0 0 1-1.8 1.9 1.9 1.9 0 0 1-1.81-1.9V21.48a5.88 5.88 0 0 1 9.33 4.75 5.88 5.88 0 1 1 11.78.11c0-12.4-9.6-22.55-21.77-23.45z" fill="#ffffff" />
+                            </svg>
+                        </div>
+                        <div class="parameters">Precipitation</div>
+                    </div>
+                </div>
+                <div class="currentWeatherColumn">
+                    <div class="hourDetail hour">2:00</div>
+                    <div class="weatherDetail temperature">10&#x2103;</div>
+                    <div class="weatherDetail wind">4</div>
+                    <div class="weatherDetail humidity">63.0</div>
+                    <div class="weatherDetail totalPrecipitation">83%</div>
+                </div>
+                <div class="currentWeatherColumn">
+                    <div class="hourDetail hour">2:00</div>
+                    <div class="weatherDetail temperature">10&#x2103;</div>
+                    <div class="weatherDetail wind">4</div>
+                    <div class="weatherDetail humidity">63.0</div>
+                    <div class="weatherDetail totalPrecipitation">83%</div>
+                </div>
+                <div class="currentWeatherColumn">
+                    <div class="hourDetail hour">2:00</div>
+                    <div class="weatherDetail temperature">10&#x2103;</div>
+                    <div class="weatherDetail wind">4</div>
+                    <div class="weatherDetail humidity">63.0</div>
+                    <div class="weatherDetail totalPrecipitation">83%</div>
+                </div>
+                <div class="currentWeatherColumn">
+                    <div class="hourDetail hour">2:00</div>
+                    <div class="weatherDetail temperature">10&#x2103;</div>
+                    <div class="weatherDetail wind">4</div>
+                    <div class="weatherDetail humidity">63.0</div>
+                    <div class="weatherDetail totalPrecipitation">83%</div>
+                </div>
+                <div class="currentWeatherColumn">
+                    <div class="hourDetail hour">2:00</div>
+                    <div class="weatherDetail temperature">10&#x2103;</div>
+                    <div class="weatherDetail wind">4</div>
+                    <div class="weatherDetail humidity">63.0</div>
+                    <div class="weatherDetail totalPrecipitation">83%</div>
+                </div>
+                <div class="currentWeatherColumn">
+                    <div class="hourDetail hour">2:00</div>
+                    <div class="weatherDetail temperature">10&#x2103;</div>
+                    <div class="weatherDetail wind">4</div>
+                    <div class="weatherDetail humidity">63.0</div>
+                    <div class="weatherDetail totalPrecipitation">83%</div>
+                </div>
+                <div class="currentWeatherColumn">
+                    <div class="hourDetail hour">2:00</div>
+                    <div class="weatherDetail temperature">10&#x2103;</div>
+                    <div class="weatherDetail wind">4</div>
+                    <div class="weatherDetail humidity">63.0</div>
+                    <div class="weatherDetail totalPrecipitation">83%</div>
+                </div>
+                <div class="currentWeatherColumn">
+                    <div class="hourDetail hour">2:00</div>
+                    <div class="weatherDetail temperature">10&#x2103;</div>
+                    <div class="weatherDetail wind">4</div>
+                    <div class="weatherDetail humidity">63.0</div>
+                    <div class="weatherDetail totalPrecipitation">83%</div>
+                </div>
+            </div>
+    </div>
+    </main>
+    <div class="iconset hidden">
+        <svg class="cloudy-day-2" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewbox="0 0 64 64">
+            <defs>
+                <filter id="blur" width="200%" height="200%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                    <feOffset dx="0" dy="4" result="offsetblur" />
+                    <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.05" />
+                    </feComponentTransfer>
+                    <feMerge>
+                        <feMergeNode />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+                <style type="text/css">
+                @keyframes am-weather-cloud-2 {
+                    0% {
+                        transform: translate(0px, 0px);
+                    }
+
+                    50% {
+                        transform: translate(2px, 0px);
+                    }
+
+                    100% {
+                        transform: translate(0px, 0px);
+                    }
+                }
+
+                .am-weather-cloud-2 {
+                    animation-name: am-weather-cloud-2;
+                    animation-duration: 3s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+
+                @keyframes am-weather-sun {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+
+                    100% {
+                        transform: rotate(360deg);
+                    }
+                }
+
+                .am-weather-sun {
+                    animation-name: am-weather-sun;
+                    animation-duration: 9s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                @keyframes am-weather-sun-shiny {
+                    0% {
+                        stroke-dasharray: 3px 10px;
+                        stroke-dashoffset: 0px;
+                    }
+
+                    50% {
+                        stroke-dasharray: 0.1px 10px;
+                        stroke-dashoffset: -1px;
+                    }
+
+                    100% {
+                        stroke-dasharray: 3px 10px;
+                        stroke-dashoffset: 0px;
+                    }
+                }
+
+                .am-weather-sun-shiny line {
+                    animation-name: am-weather-sun-shiny;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+                </style>
+            </defs>
+            <g filter="url(#blur)" id="cloudy-day-2">
+                <g transform="translate(20,10)">
+                    <g transform="translate(0,16)">
+                        <g class="am-weather-sun">
+                            <g>
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(45)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(90)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(135)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(180)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(225)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(270)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(315)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                        </g>
+                        <circle cx="0" cy="0" fill="orange" r="5" stroke="orange" stroke-width="2" />
+                    </g>
+                    <g class="am-weather-cloud-2">
+                        <path d="M47.7,35.4c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3    c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z" fill="#91C0F8" stroke="white" stroke-linejoin="round" stroke-width="1.2" transform="translate(-20,-11)" />
+                    </g>
+                </g>
+            </g>
+        </svg>
+        <svg class="cloudy-night-2" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewbox="0 0 64 64">
+            <defs>
+                <filter id="blur" width="200%" height="200%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                    <feOffset dx="0" dy="4" result="offsetblur" />
+                    <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.05" />
+                    </feComponentTransfer>
+                    <feMerge>
+                        <feMergeNode />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+                <style type="text/css">
+                @keyframes am-weather-cloud-2 {
+                    0% {
+                        transform: translate(0px, 0px);
+                    }
+
+                    50% {
+                        transform: translate(2px, 0px);
+                    }
+
+                    100% {
+                        transform: translate(0px, 0px);
+                    }
+                }
+
+                .am-weather-cloud-2 {
+                    animation-name: am-weather-cloud-2;
+                    animation-duration: 3s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+
+                @keyframes am-weather-moon {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+
+                    50% {
+                        transform: rotate(15deg);
+                    }
+
+                    100% {
+                        transform: rotate(0deg);
+                    }
+                }
+
+                .am-weather-moon {
+                    animation-name: am-weather-moon;
+                    animation-duration: 6s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                    transform-origin: 12.5px 15.15px 0;
+                    /* TODO FF CENTER ISSUE */
+                }
+
+                @keyframes am-weather-moon-star-1 {
+                    0% {
+                        opacity: 0;
+                    }
+
+                    100% {
+                        opacity: 1;
+                    }
+                }
+
+                .am-weather-moon-star-1 {
+                    animation-name: am-weather-moon-star-1;
+                    animation-delay: 3s;
+                    animation-duration: 5s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: 1;
+                }
+
+                @keyframes am-weather-moon-star-2 {
+                    0% {
+                        opacity: 0;
+                    }
+
+                    100% {
+                        opacity: 1;
+                    }
+                }
+
+                .am-weather-moon-star-2 {
+                    animation-name: am-weather-moon-star-2;
+                    animation-delay: 5s;
+                    animation-duration: 4s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: 1;
+                }
+                </style>
+            </defs>
+            <g filter="url(#blur)" id="cloudy-night-2">
+                <g transform="translate(20,10)">
+                    <g transform="translate(16,4), scale(0.8)">
+                        <g class="am-weather-moon-star-1">
+                            <polygon fill="orange" points="3.3,1.5 4,2.7 5.2,3.3 4,4 3.3,5.2 2.7,4 1.5,3.3 2.7,2.7" stroke="none" stroke-miterlimit="10" />
+                        </g>
+                        <g class="am-weather-moon-star-2">
+                            <polygon fill="orange" points="3.3,1.5 4,2.7 5.2,3.3 4,4 3.3,5.2 2.7,4 1.5,3.3 2.7,2.7" stroke="none" stroke-miterlimit="10" transform="translate(20,10)" />
+                        </g>
+                        <g class="am-weather-moon">
+                            <path d="M14.5,13.2c0-3.7,2-6.9,5-8.7   c-1.5-0.9-3.2-1.3-5-1.3c-5.5,0-10,4.5-10,10s4.5,10,10,10c1.8,0,3.5-0.5,5-1.3C16.5,20.2,14.5,16.9,14.5,13.2z" fill="orange" stroke="orange" stroke-linejoin="round" stroke-width="2" />
+                        </g>
+                    </g>
+                    <g class="am-weather-cloud-2">
+                        <path d="M47.7,35.4    c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3    c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z" fill="#91C0F8" stroke="white" stroke-linejoin="round" stroke-width="1.2" transform="translate(-20,-11)" />
+                    </g>
+                </g>
+            </g>
+        </svg>
+        <svg class="day" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewbox="0 0 64 64">
+            <defs>
+                <filter id="blur" width="200%" height="200%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                    <feOffset dx="0" dy="4" result="offsetblur" />
+                    <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.05" />
+                    </feComponentTransfer>
+                    <feMerge>
+                        <feMergeNode />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+                <style type="text/css">
+                @keyframes am-weather-cloud-1 {
+                    0% {
+                        transform: translate(-5px, 0px);
+                    }
+
+                    50% {
+                        transform: translate(10px, 0px);
+                    }
+
+                    100% {
+                        transform: translate(-5px, 0px);
+                    }
+                }
+
+                .am-weather-cloud-1 {
+                    animation-name: am-weather-cloud-1;
+                    animation-duration: 7s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                @keyframes am-weather-cloud-2 {
+                    0% {
+                        transform: translate(0px, 0px);
+                    }
+
+                    50% {
+                        transform: translate(2px, 0px);
+                    }
+
+                    100% {
+                        transform: translate(0px, 0px);
+                    }
+                }
+
+                .am-weather-cloud-2 {
+                    animation-name: am-weather-cloud-2;
+                    animation-duration: 3s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                @keyframes am-weather-sun {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+
+                    100% {
+                        transform: rotate(360deg);
+                    }
+                }
+
+                .am-weather-sun {
+                    animation-name: am-weather-sun;
+                    animation-duration: 9s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                @keyframes am-weather-sun-shiny {
+                    0% {
+                        stroke-dasharray: 3px 10px;
+                        stroke-dashoffset: 0px;
+                    }
+
+                    50% {
+                        stroke-dasharray: 0.1px 10px;
+                        stroke-dashoffset: -1px;
+                    }
+
+                    100% {
+                        stroke-dasharray: 3px 10px;
+                        stroke-dashoffset: 0px;
+                    }
+                }
+
+                .am-weather-sun-shiny line {
+                    animation-name: am-weather-sun-shiny;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+
+                @keyframes am-weather-moon {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+
+                    50% {
+                        transform: rotate(15deg);
+                    }
+
+                    100% {
+                        transform: rotate(0deg);
+                    }
+                }
+
+                .am-weather-moon {
+                    animation-name: am-weather-moon;
+                    animation-duration: 6s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                    transform-origin: 12.5px 15.15px 0;
+                    /* TODO FF CENTER ISSUE */
+                }
+
+                @keyframes am-weather-moon-star-1 {
+                    0% {
+                        opacity: 0;
+                    }
+
+                    100% {
+                        opacity: 1;
+                    }
+                }
+
+                .am-weather-moon-star-1 {
+                    animation-name: am-weather-moon-star-1;
+                    animation-delay: 3s;
+                    animation-duration: 5s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: 1;
+                }
+
+                @keyframes am-weather-moon-star-2 {
+                    0% {
+                        opacity: 0;
+                    }
+
+                    100% {
+                        opacity: 1;
+                    }
+                }
+
+                .am-weather-moon-star-2 {
+                    animation-name: am-weather-moon-star-2;
+                    animation-delay: 5s;
+                    animation-duration: 4s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: 1;
+                }
+
+                @keyframes am-weather-rain {
+                    0% {
+                        stroke-dashoffset: 0;
+                    }
+
+                    100% {
+                        stroke-dashoffset: -100;
+                    }
+                }
+
+                .am-weather-rain-1 {
+                    animation-name: am-weather-rain;
+                    animation-duration: 8s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                .am-weather-rain-2 {
+                    animation-name: am-weather-rain;
+                    animation-delay: 0.25s;
+                    animation-duration: 8s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                @keyframes am-weather-snow {
+                    0% {
+                        transform: translateX(0) translateY(0);
+                    }
+
+                    33.33% {
+                        transform: translateX(-1.2px) translateY(2px);
+                    }
+
+                    66.66% {
+                        transform: translateX(1.4px) translateY(4px);
+                        opacity: 1;
+                    }
+
+                    100% {
+                        transform: translateX(-1.6px) translateY(6px);
+                        opacity: 0;
+                    }
+                }
+
+                @keyframes am-weather-snow-reverse {
+                    0% {
+                        transform: translateX(0) translateY(0);
+                    }
+
+                    33.33% {
+                        transform: translateX(1.2px) translateY(2px);
+                    }
+
+                    66.66% {
+                        transform: translateX(-1.4px) translateY(4px);
+                        opacity: 1;
+                    }
+
+                    100% {
+                        transform: translateX(1.6px) translateY(6px);
+                        opacity: 0;
+                    }
+                }
+
+                .am-weather-snow-1 {
+                    animation-name: am-weather-snow;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                .am-weather-snow-2 {
+                    animation-name: am-weather-snow;
+                    animation-delay: 1.2s;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                .am-weather-snow-3 {
+                    animation-name: am-weather-snow-reverse;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                .am-weather-easing-ease-in-out {
+                    animation-timing-function: ease-in-out;
+                }
+                </style>
+            </defs>
+            <g filter="url(#blur)" id="day">
+                <g transform="translate(32,32)">
+                    <g class="am-weather-sun am-weather-sun-shiny am-weather-easing-ease-in-out">
+                        <g>
+                            <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                        </g>
+                        <g transform="rotate(45)">
+                            <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                        </g>
+                        <g transform="rotate(90)">
+                            <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                        </g>
+                        <g transform="rotate(135)">
+                            <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                        </g>
+                        <g transform="rotate(180)">
+                            <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                        </g>
+                        <g transform="rotate(225)">
+                            <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                        </g>
+                        <g transform="rotate(270)">
+                            <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                        </g>
+                        <g transform="rotate(315)">
+                            <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                        </g>
+                    </g>
+                    <circle cx="0" cy="0" fill="orange" r="5" stroke="orange" stroke-width="2" />
+                </g>
+            </g>
+        </svg>
+        <svg class="night" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewbox="0 0 64 64">
+            <defs>
+                <filter id="blur" width="200%" height="200%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                    <feOffset dx="0" dy="4" result="offsetblur" />
+                    <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.05" />
+                    </feComponentTransfer>
+                    <feMerge>
+                        <feMergeNode />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+                <style type="text/css">
+                @keyframes am-weather-cloud-1 {
+                    0% {
+                        transform: translate(-5px, 0px);
+                    }
+
+                    50% {
+                        transform: translate(10px, 0px);
+                    }
+
+                    100% {
+                        transform: translate(-5px, 0px);
+                    }
+                }
+
+                .am-weather-cloud-1 {
+                    animation-name: am-weather-cloud-1;
+                    animation-duration: 7s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                @keyframes am-weather-cloud-2 {
+                    0% {
+                        transform: translate(0px, 0px);
+                    }
+
+                    50% {
+                        transform: translate(2px, 0px);
+                    }
+
+                    100% {
+                        transform: translate(0px, 0px);
+                    }
+                }
+
+                .am-weather-cloud-2 {
+                    animation-name: am-weather-cloud-2;
+                    animation-duration: 3s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+
+                @keyframes am-weather-sun {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+
+                    100% {
+                        transform: rotate(360deg);
+                    }
+                }
+
+                .am-weather-sun {
+                    animation-name: am-weather-sun;
+                    animation-duration: 9s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                @keyframes am-weather-sun-shiny {
+                    0% {
+                        stroke-dasharray: 3px 10px;
+                        stroke-dashoffset: 0px;
+                    }
+
+                    50% {
+                        stroke-dasharray: 0.1px 10px;
+                        stroke-dashoffset: -1px;
+                    }
+
+                    100% {
+                        stroke-dasharray: 3px 10px;
+                        stroke-dashoffset: 0px;
+                    }
+                }
+
+                .am-weather-sun-shiny line {
+                    animation-name: am-weather-sun-shiny;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+
+                @keyframes am-weather-moon {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+
+                    50% {
+                        transform: rotate(15deg);
+                    }
+
+                    100% {
+                        transform: rotate(0deg);
+                    }
+                }
+
+                .am-weather-moon {
+                    animation-name: am-weather-moon;
+                    animation-duration: 6s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                    transform-origin: 12.5px 15.15px 0;
+                    /* TODO FF CENTER ISSUE */
+                }
+
+                @keyframes am-weather-moon-star-1 {
+                    0% {
+                        opacity: 0;
+                    }
+
+                    100% {
+                        opacity: 1;
+                    }
+                }
+
+                .am-weather-moon-star-1 {
+                    animation-name: am-weather-moon-star-1;
+                    animation-delay: 3s;
+                    animation-duration: 5s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: 1;
+                }
+
+                @keyframes am-weather-moon-star-2 {
+                    0% {
+                        opacity: 0;
+                    }
+
+                    100% {
+                        opacity: 1;
+                    }
+                }
+
+                .am-weather-moon-star-2 {
+                    animation-name: am-weather-moon-star-2;
+                    animation-delay: 5s;
+                    animation-duration: 4s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: 1;
+                }
+
+
+                @keyframes am-weather-rain {
+                    0% {
+                        stroke-dashoffset: 0;
+                    }
+
+                    100% {
+                        stroke-dashoffset: -100;
+                    }
+                }
+
+                .am-weather-rain-1 {
+                    animation-name: am-weather-rain;
+                    animation-duration: 8s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                .am-weather-rain-2 {
+                    animation-name: am-weather-rain;
+                    animation-delay: 0.25s;
+                    animation-duration: 8s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                @keyframes am-weather-snow {
+                    0% {
+                        transform: translateX(0) translateY(0);
+                    }
+
+                    33.33% {
+                        transform: translateX(-1.2px) translateY(2px);
+                    }
+
+                    66.66% {
+                        transform: translateX(1.4px) translateY(4px);
+                        opacity: 1;
+                    }
+
+                    100% {
+                        transform: translateX(-1.6px) translateY(6px);
+                        opacity: 0;
+                    }
+                }
+
+                @keyframes am-weather-snow-reverse {
+                    0% {
+                        transform: translateX(0) translateY(0);
+                    }
+
+                    33.33% {
+                        transform: translateX(1.2px) translateY(2px);
+                    }
+
+                    66.66% {
+                        transform: translateX(-1.4px) translateY(4px);
+                        opacity: 1;
+                    }
+
+                    100% {
+                        transform: translateX(1.6px) translateY(6px);
+                        opacity: 0;
+                    }
+                }
+
+                .am-weather-snow-1 {
+                    animation-name: am-weather-snow;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                .am-weather-snow-2 {
+                    animation-name: am-weather-snow;
+                    animation-delay: 1.2s;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                .am-weather-snow-3 {
+                    animation-name: am-weather-snow-reverse;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+
+                .am-weather-easing-ease-in-out {
+                    animation-timing-function: ease-in-out;
+                }
+                </style>
+            </defs>
+            <g filter="url(#blur)" id="night">
+                <g transform="translate(20,20)">
+                    <g class="am-weather-moon-star-1">
+                        <polygon fill="orange" points="3.3,1.5 4,2.7 5.2,3.3 4,4 3.3,5.2 2.7,4 1.5,3.3 2.7,2.7" stroke="none" stroke-miterlimit="10" />
+                    </g>
+                    <g class="am-weather-moon-star-2">
+                        <polygon fill="orange" points="3.3,1.5 4,2.7 5.2,3.3 4,4 3.3,5.2 2.7,4 1.5,3.3 2.7,2.7" stroke="none" stroke-miterlimit="10" transform="translate(20,10)" />
+                    </g>
+                    <g class="am-weather-moon">
+                        <path d="M14.5,13.2c0-3.7,2-6.9,5-8.7   c-1.5-0.9-3.2-1.3-5-1.3c-5.5,0-10,4.5-10,10s4.5,10,10,10c1.8,0,3.5-0.5,5-1.3C16.5,20.2,14.5,16.9,14.5,13.2z" fill="orange" stroke="orange" stroke-linejoin="round" stroke-width="2" />
+                    </g>
+                </g>
+            </g>
+        </svg>
+        <svg class="rainy-1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewbox="0 0 64 64">
+            <defs>
+                <filter id="blur" width="200%" height="200%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                    <feOffset dx="0" dy="4" result="offsetblur" />
+                    <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.05" />
+                    </feComponentTransfer>
+                    <feMerge>
+                        <feMergeNode />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+                <style type="text/css">
+                @keyframes am-weather-sun {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+
+                    100% {
+                        transform: rotate(360deg);
+                    }
+                }
+
+                .am-weather-sun {
+                    animation-name: am-weather-sun;
+                    animation-duration: 9s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+
+                @keyframes am-weather-rain {
+                    0% {
+                        stroke-dashoffset: 0;
+                    }
+
+                    100% {
+                        stroke-dashoffset: -100;
+                    }
+                }
+
+                .am-weather-rain-1 {
+                    animation-name: am-weather-rain;
+                    animation-duration: 8s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                .am-weather-rain-2 {
+                    animation-name: am-weather-rain;
+                    animation-delay: 0.25s;
+                    animation-duration: 8s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+                </style>
+            </defs>
+            <g filter="url(#blur)" id="rainy-1">
+                <g transform="translate(20,10)">
+                    <g transform="translate(0,16), scale(1.2)">
+                        <g class="am-weather-sun">
+                            <g>
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(45)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(90)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(135)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(180)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(225)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(270)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(315)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                        </g>
+                        <circle cx="0" cy="0" fill="orange" r="5" stroke="orange" stroke-width="2" />
+                    </g>
+                    <g>
+                        <path d="M47.7,35.4c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3    c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z" fill="#57A0EE" stroke="white" stroke-linejoin="round" stroke-width="1.5" transform="translate(-15,-5), scale(0.85)" />
+                    </g>
+                </g>
+                <g transform="translate(34,46), rotate(10)">
+                    <line class="am-weather-rain-1" fill="none" stroke="#91C0F8" stroke-dasharray="4,7" stroke-linecap="round" stroke-width="2" transform="translate(-6,1)" x1="0" x2="0" y1="0" y2="8" />
+                    <line class="am-weather-rain-2" fill="none" stroke="#91C0F8" stroke-dasharray="4,7" stroke-linecap="round" stroke-width="2" transform="translate(0,-1)" x1="0" x2="0" y1="0" y2="8" />
+                </g>
+            </g>
+        </svg>
+        <svg class="cloudy" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewbox="0 0 64 64">
+            <defs>
+                <filter id="blur" width="200%" height="200%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                    <feOffset dx="0" dy="4" result="offsetblur" />
+                    <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.05" />
+                    </feComponentTransfer>
+                    <feMerge>
+                        <feMergeNode />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+                <style type="text/css">
+                @keyframes am-weather-cloud-1 {
+                    0% {
+                        transform: translate(-5px, 0px);
+                    }
+
+                    50% {
+                        transform: translate(10px, 0px);
+                    }
+
+                    100% {
+                        transform: translate(-5px, 0px);
+                    }
+                }
+
+                .am-weather-cloud-1 {
+                    animation-name: am-weather-cloud-1;
+                    animation-duration: 7s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                @keyframes am-weather-cloud-2 {
+                    0% {
+                        transform: translate(0px, 0px);
+                    }
+
+                    50% {
+                        transform: translate(2px, 0px);
+                    }
+
+                    100% {
+                        transform: translate(0px, 0px);
+                    }
+                }
+
+                .am-weather-cloud-2 {
+                    animation-name: am-weather-cloud-2;
+                    animation-duration: 3s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+
+                @keyframes am-weather-sun {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+
+                    100% {
+                        transform: rotate(360deg);
+                    }
+                }
+
+                .am-weather-sun {
+                    animation-name: am-weather-sun;
+                    animation-duration: 9s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                @keyframes am-weather-sun-shiny {
+                    0% {
+                        stroke-dasharray: 3px 10px;
+                        stroke-dashoffset: 0px;
+                    }
+
+                    50% {
+                        stroke-dasharray: 0.1px 10px;
+                        stroke-dashoffset: -1px;
+                    }
+
+                    100% {
+                        stroke-dasharray: 3px 10px;
+                        stroke-dashoffset: 0px;
+                    }
+                }
+
+                .am-weather-sun-shiny line {
+                    animation-name: am-weather-sun-shiny;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+
+
+                @keyframes am-weather-moon {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+
+                    50% {
+                        transform: rotate(15deg);
+                    }
+
+                    100% {
+                        transform: rotate(0deg);
+                    }
+                }
+
+                .am-weather-moon {
+                    animation-name: am-weather-moon;
+                    animation-duration: 6s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                    transform-origin: 12.5px 15.15px 0;
+                    /* TODO FF CENTER ISSUE */
+                }
+
+                @keyframes am-weather-moon-star-1 {
+                    0% {
+                        opacity: 0;
+                    }
+
+                    100% {
+                        opacity: 1;
+                    }
+                }
+
+                .am-weather-moon-star-1 {
+                    animation-name: am-weather-moon-star-1;
+                    animation-delay: 3s;
+                    animation-duration: 5s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: 1;
+                }
+
+                @keyframes am-weather-moon-star-2 {
+                    0% {
+                        opacity: 0;
+                    }
+
+                    100% {
+                        opacity: 1;
+                    }
+                }
+
+                .am-weather-moon-star-2 {
+                    animation-name: am-weather-moon-star-2;
+                    animation-delay: 5s;
+                    animation-duration: 4s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: 1;
+                }
+
+
+                @keyframes am-weather-rain {
+                    0% {
+                        stroke-dashoffset: 0;
+                    }
+
+                    100% {
+                        stroke-dashoffset: -100;
+                    }
+                }
+
+                .am-weather-rain-1 {
+                    animation-name: am-weather-rain;
+                    animation-duration: 8s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                .am-weather-rain-2 {
+                    animation-name: am-weather-rain;
+                    animation-delay: 0.25s;
+                    animation-duration: 8s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+
+                @keyframes am-weather-snow {
+                    0% {
+                        transform: translateX(0) translateY(0);
+                    }
+
+                    33.33% {
+                        transform: translateX(-1.2px) translateY(2px);
+                    }
+
+                    66.66% {
+                        transform: translateX(1.4px) translateY(4px);
+                        opacity: 1;
+                    }
+
+                    100% {
+                        transform: translateX(-1.6px) translateY(6px);
+                        opacity: 0;
+                    }
+                }
+
+                @keyframes am-weather-snow-reverse {
+                    0% {
+                        transform: translateX(0) translateY(0);
+                    }
+
+                    33.33% {
+                        transform: translateX(1.2px) translateY(2px);
+                    }
+
+                    66.66% {
+                        transform: translateX(-1.4px) translateY(4px);
+                        opacity: 1;
+                    }
+
+                    100% {
+                        transform: translateX(1.6px) translateY(6px);
+                        opacity: 0;
+                    }
+                }
+
+                .am-weather-snow-1 {
+                    animation-name: am-weather-snow;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                .am-weather-snow-2 {
+                    animation-name: am-weather-snow;
+                    animation-delay: 1.2s;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                .am-weather-snow-3 {
+                    animation-name: am-weather-snow-reverse;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+
+
+                .am-weather-easing-ease-in-out {
+                    animation-timing-function: ease-in-out;
+                }
+                </style>
+            </defs>
+            <g filter="url(#blur)" id="cloudy">
+                <g transform="translate(20,10)">
+                    <g class="am-weather-cloud-1">
+                        <path d="M47.7,35.4     c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3     c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z" fill="#91C0F8" stroke="white" stroke-linejoin="round" stroke-width="1.2" transform="translate(-10,-8), scale(0.6)" />
+                    </g>
+                    <g class="am-weather-cloud-2">
+                        <path d="M47.7,35.4     c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3     c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z" fill="#57A0EE" stroke="white" stroke-linejoin="round" stroke-width="1.2" transform="translate(-20,-11)" />
+                    </g>
+                </g>
+            </g>
+        </svg>
+        <svg class="rainy-2" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewbox="0 0 64 64">
+            <defs>
+                <filter id="blur" width="200%" height="200%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                    <feOffset dx="0" dy="4" result="offsetblur" />
+                    <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.05" />
+                    </feComponentTransfer>
+                    <feMerge>
+                        <feMergeNode />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+                <style type="text/css">
+                @keyframes am-weather-sun {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+
+                    100% {
+                        transform: rotate(360deg);
+                    }
+                }
+
+                .am-weather-sun {
+                    animation-name: am-weather-sun;
+                    animation-duration: 9s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+
+                @keyframes am-weather-rain {
+                    0% {
+                        stroke-dashoffset: 0;
+                    }
+
+                    100% {
+                        stroke-dashoffset: -100;
+                    }
+                }
+
+                .am-weather-rain-1 {
+                    animation-name: am-weather-rain;
+                    animation-duration: 8s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+                </style>
+            </defs>
+            <g filter="url(#blur)" id="rainy-2">
+                <g transform="translate(20,10)">
+                    <g transform="translate(0,16)">
+                        <g class="am-weather-sun">
+                            <g>
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(45)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(90)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(135)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(180)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(225)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(270)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(315)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                        </g>
+                        <circle cx="0" cy="0" fill="orange" r="5" stroke="orange" stroke-width="2" />
+                    </g>
+                    <g>
+                        <path d="M47.7,35.4c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3    c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z" fill="#57A0EE" stroke="white" stroke-linejoin="round" stroke-width="1.2" transform="translate(-20,-11)" />
+                    </g>
+                </g>
+                <g transform="translate(37,45), rotate(10)">
+                    <line class="am-weather-rain-1" fill="none" stroke="#91C0F8" stroke-dasharray="4,7" stroke-linecap="round" stroke-width="2" transform="translate(-6,1)" x1="0" x2="0" y1="0" y2="8" />
+                </g>
+            </g>
+        </svg>
+        <svg class="rainy-3" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewbox="0 0 64 64">
+            <defs>
+                <filter id="blur" width="200%" height="200%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                    <feOffset dx="0" dy="4" result="offsetblur" />
+                    <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.05" />
+                    </feComponentTransfer>
+                    <feMerge>
+                        <feMergeNode />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+                <style type="text/css">
+                @keyframes am-weather-sun {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+
+                    100% {
+                        transform: rotate(360deg);
+                    }
+                }
+
+                .am-weather-sun {
+                    animation-name: am-weather-sun;
+                    animation-duration: 9s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+
+                @keyframes am-weather-rain {
+                    0% {
+                        stroke-dashoffset: 0;
+                    }
+
+                    100% {
+                        stroke-dashoffset: -100;
+                    }
+                }
+
+                .am-weather-rain-1 {
+                    animation-name: am-weather-rain;
+                    animation-duration: 8s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                .am-weather-rain-2 {
+                    animation-name: am-weather-rain;
+                    animation-delay: 0.25s;
+                    animation-duration: 8s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+                </style>
+            </defs>
+            <g filter="url(#blur)" id="rainy-3">
+                <g transform="translate(20,10)">
+                    <g transform="translate(0,16)">
+                        <g class="am-weather-sun">
+                            <g>
+                                <line fifll="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(45)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(90)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(135)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(180)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(225)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(270)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(315)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                        </g>
+                        <circle cx="0" cy="0" fill="orange" r="5" stroke="orange" stroke-width="2" />
+                    </g>
+                    <g>
+                        <path d="M47.7,35.4c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3    c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z" fill="#57A0EE" stroke="white" stroke-linejoin="round" stroke-width="1.2" transform="translate(-20,-11)" />
+                    </g>
+                </g>
+                <g transform="translate(34,46), rotate(10)">
+                    <line class="am-weather-rain-1" fill="none" stroke="#91C0F8" stroke-dasharray="4,7" stroke-linecap="round" stroke-width="2" transform="translate(-6,1)" x1="0" x2="0" y1="0" y2="8" />
+                    <line class="am-weather-rain-2" fill="none" stroke="#91C0F8" stroke-dasharray="4,7" stroke-linecap="round" stroke-width="2" transform="translate(0,-1)" x1="0" x2="0" y1="0" y2="8" />
+                </g>
+            </g>
+        </svg>
+        <svg class="rainy-4" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewbox="0 0 64 64">
+            <defs>
+                <filter id="blur" width="200%" height="200%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                    <feOffset dx="0" dy="4" result="offsetblur" />
+                    <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.05" />
+                    </feComponentTransfer>
+                    <feMerge>
+                        <feMergeNode />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+                <style type="text/css">
+                @keyframes am-weather-rain {
+                    0% {
+                        stroke-dashoffset: 0;
+                    }
+
+                    100% {
+                        stroke-dashoffset: -100;
+                    }
+                }
+
+                .am-weather-rain-1 {
+                    animation-name: am-weather-rain;
+                    animation-duration: 8s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+                </style>
+            </defs>
+            <g filter="url(#blur)" id="rainy-4">
+                <g transform="translate(20,10)">
+                    <g>
+                        <path d="M47.7,35.4c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3    c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z" fill="#57A0EE" stroke="white" stroke-linejoin="round" stroke-width="1.2" transform="translate(-20,-11)" />
+                    </g>
+                </g>
+                <g transform="translate(37,45), rotate(10)">
+                    <line class="am-weather-rain-1" fill="none" stroke="#91C0F8" stroke-dasharray="4,7" stroke-linecap="round" stroke-width="2" transform="translate(-6,1)" x1="0" x2="0" y1="0" y2="8" />
+                </g>
+            </g>
+        </svg>
+        <svg class="rainy-5" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewbox="0 0 64 64">
+            <defs>
+                <filter id="blur" width="200%" height="200%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                    <feOffset dx="0" dy="4" result="offsetblur" />
+                    <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.05" />
+                    </feComponentTransfer>
+                    <feMerge>
+                        <feMergeNode />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+                <style type="text/css">
+                @keyframes am-weather-rain {
+                    0% {
+                        stroke-dashoffset: 0;
+                    }
+
+                    100% {
+                        stroke-dashoffset: -100;
+                    }
+                }
+
+                .am-weather-rain-1 {
+                    animation-name: am-weather-rain;
+                    animation-duration: 8s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                .am-weather-rain-2 {
+                    animation-name: am-weather-rain;
+                    animation-delay: 0.25s;
+                    animation-duration: 8s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+                </style>
+            </defs>
+            <g filter="url(#blur)" id="rainy-5">
+                <g transform="translate(20,10)">
+                    <g>
+                        <path d="M47.7,35.4c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3    c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z" fill="#57A0EE" stroke="white" stroke-linejoin="round" stroke-width="1.2" transform="translate(-20,-11)" />
+                    </g>
+                </g>
+                <g transform="translate(34,46), rotate(10)">
+                    <line class="am-weather-rain-1" fill="none" stroke="#91C0F8" stroke-dasharray="4,7" stroke-linecap="round" stroke-width="2" transform="translate(-6,1)" x1="0" x2="0" y1="0" y2="8" />
+                    <line class="am-weather-rain-2" fill="none" stroke="#91C0F8" stroke-dasharray="4,7" stroke-linecap="round" stroke-width="2" transform="translate(0,-1)" x1="0" x2="0" y1="0" y2="8" />
+                </g>
+            </g>
+        </svg>
+        <svg class="rainy-6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewbox="0 0 64 64">
+            <defs>
+                <filter id="blur" width="200%" height="200%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                    <feOffset dx="0" dy="4" result="offsetblur" />
+                    <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.05" />
+                    </feComponentTransfer>
+                    <feMerge>
+                        <feMergeNode />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+                <style type="text/css">
+                @keyframes am-weather-rain {
+                    0% {
+                        stroke-dashoffset: 0;
+                    }
+
+                    100% {
+                        stroke-dashoffset: -100;
+                    }
+                }
+
+                .am-weather-rain-1 {
+                    animation-name: am-weather-rain;
+                    animation-duration: 8s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                .am-weather-rain-2 {
+                    animation-name: am-weather-rain;
+                    animation-delay: 0.25s;
+                    animation-duration: 8s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+                </style>
+            </defs>
+            <g filter="url(#blur)" id="rainy-6">
+                <g transform="translate(20,10)">
+                    <g>
+                        <path d="M47.7,35.4c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3    c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z" fill="#57A0EE" stroke="white" stroke-linejoin="round" stroke-width="1.2" transform="translate(-20,-11)" />
+                    </g>
+                </g>
+                <g transform="translate(31,46), rotate(10)">
+                    <line class="am-weather-rain-1" fill="none" stroke="#91C0F8" stroke-dasharray="4,4" stroke-linecap="round" stroke-width="2" transform="translate(-4,1)" x1="0" x2="0" y1="0" y2="8" />
+                    <line class="am-weather-rain-2" fill="none" stroke="#91C0F8" stroke-dasharray="4,4" stroke-linecap="round" stroke-width="2" transform="translate(0,-1)" x1="0" x2="0" y1="0" y2="8" />
+                    <line class="am-weather-rain-1" fill="none" stroke="#91C0F8" stroke-dasharray="4,4" stroke-linecap="round" stroke-width="2" transform="translate(4,0)" x1="0" x2="0" y1="0" y2="8" />
+                </g>
+            </g>
+        </svg>
+        <svg class="rainy-7" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewbox="0 0 64 64">
+            <defs>
+                <filter id="blur" width="200%" height="200%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                    <feOffset dx="0" dy="4" result="offsetblur" />
+                    <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.05" />
+                    </feComponentTransfer>
+                    <feMerge>
+                        <feMergeNode />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+                <style type="text/css">
+                @keyframes am-weather-rain {
+                    0% {
+                        stroke-dashoffset: 0;
+                    }
+
+                    100% {
+                        stroke-dashoffset: -100;
+                    }
+                }
+
+                .am-weather-rain-1 {
+                    animation-name: am-weather-rain;
+                    animation-duration: 8s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                .am-weather-rain-2 {
+                    animation-name: am-weather-rain;
+                    animation-delay: 0.25s;
+                    animation-duration: 8s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+                </style>
+            </defs>
+            <g filter="url(#blur)" id="rainy-7">
+                <g transform="translate(20,10)">
+                    <g>
+                        <path d="M47.7,35.4c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3    c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z" fill="#57A0EE" stroke="white" stroke-linejoin="round" stroke-width="1.2" transform="translate(-20,-11)" />
+                    </g>
+                </g>
+                <g transform="translate(31,46), rotate(10)">
+                    <line class="am-weather-rain-1" fill="none" stroke="#91C0F8" stroke-dasharray="0.1,7" stroke-linecap="round" stroke-width="3" transform="translate(-5,1)" x1="0" x2="0" y1="0" y2="8" />
+                    <line class="am-weather-rain-2" fill="none" stroke="#91C0F8" stroke-dasharray="0.1,7" stroke-linecap="round" stroke-width="3" transform="translate(0,-1)" x1="0" x2="0" y1="0" y2="8" />
+                    <line class="am-weather-rain-1" fill="none" stroke="#91C0F8" stroke-dasharray="0.1,7" stroke-linecap="round" stroke-width="3" transform="translate(5,0)" x1="0" x2="0" y1="0" y2="8" />
+                </g>
+            </g>
+        </svg>
+        <svg class="snowy-2" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewbox="0 0 64 64">
+            <defs>
+                <filter id="blur" width="200%" height="200%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                    <feOffset dx="0" dy="4" result="offsetblur" />
+                    <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.05" />
+                    </feComponentTransfer>
+                    <feMerge>
+                        <feMergeNode />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+                <style type="text/css">
+                @keyframes am-weather-cloud-2 {
+                    0% {
+                        transform: translate(0px, 0px);
+                    }
+
+                    50% {
+                        transform: translate(2px, 0px);
+                    }
+
+                    100% {
+                        transform: translate(0px, 0px);
+                    }
+                }
+
+                .am-weather-cloud-2 {
+                    animation-name: am-weather-cloud-2;
+                    animation-duration: 3s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+
+                @keyframes am-weather-sun {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+
+                    100% {
+                        transform: rotate(360deg);
+                    }
+                }
+
+                .am-weather-sun {
+                    animation-name: am-weather-sun;
+                    animation-duration: 9s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                @keyframes am-weather-sun-shiny {
+                    0% {
+                        stroke-dasharray: 3px 10px;
+                        stroke-dashoffset: 0px;
+                    }
+
+                    50% {
+                        stroke-dasharray: 0.1px 10px;
+                        stroke-dashoffset: -1px;
+                    }
+
+                    100% {
+                        stroke-dasharray: 3px 10px;
+                        stroke-dashoffset: 0px;
+                    }
+                }
+
+                .am-weather-sun-shiny line {
+                    animation-name: am-weather-sun-shiny;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+
+                @keyframes am-weather-snow {
+                    0% {
+                        transform: translateX(0) translateY(0);
+                    }
+
+                    33.33% {
+                        transform: translateX(-1.2px) translateY(2px);
+                    }
+
+                    66.66% {
+                        transform: translateX(1.4px) translateY(4px);
+                        opacity: 1;
+                    }
+
+                    100% {
+                        transform: translateX(-1.6px) translateY(6px);
+                        opacity: 0;
+                    }
+                }
+
+                .am-weather-snow-1 {
+                    animation-name: am-weather-snow;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+                </style>
+            </defs>
+            <g filter="url(#blur)" id="snowy-2">
+                <g transform="translate(20,10)">
+                    <g transform="translate(0,16)">
+                        <g class="am-weather-sun">
+                            <g>
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(45)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(90)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(135)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(180)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(225)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(270)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(315)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                        </g>
+                        <circle cx="0" cy="0" fill="orange" r="5" stroke="orange" stroke-width="2" />
+                    </g>
+                    <g class="am-weather-cloud-2">
+                        <path d="M47.7,35.4c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3    c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z" fill="#57A0EE" stroke="white" stroke-linejoin="round" stroke-width="1.2" transform="translate(-20,-11)" />
+                    </g>
+                </g>
+                <g class="am-weather-snow-1">
+                    <g transform="translate(32,38)">
+                        <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1.2" transform="translate(0,9), rotate(0)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                        <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(45)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                        <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(90)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                        <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(135)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                    </g>
+                </g>
+            </g>
+        </svg>
+        <svg class="snowy-3" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewbox="0 0 64 64">
+            <defs>
+                <filter id="blur" width="200%" height="200%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                    <feOffset dx="0" dy="4" result="offsetblur" />
+                    <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.05" />
+                    </feComponentTransfer>
+                    <feMerge>
+                        <feMergeNode />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+                <style type="text/css">
+                @keyframes am-weather-cloud-2 {
+                    0% {
+                        transform: translate(0px, 0px);
+                    }
+
+                    50% {
+                        transform: translate(2px, 0px);
+                    }
+
+                    100% {
+                        transform: translate(0px, 0px);
+                    }
+                }
+
+                .am-weather-cloud-2 {
+                    animation-name: am-weather-cloud-2;
+                    animation-duration: 3s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+
+                @keyframes am-weather-sun {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+
+                    100% {
+                        transform: rotate(360deg);
+                    }
+                }
+
+                .am-weather-sun {
+                    animation-name: am-weather-sun;
+                    animation-duration: 9s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                @keyframes am-weather-sun-shiny {
+                    0% {
+                        stroke-dasharray: 3px 10px;
+                        stroke-dashoffset: 0px;
+                    }
+
+                    50% {
+                        stroke-dasharray: 0.1px 10px;
+                        stroke-dashoffset: -1px;
+                    }
+
+                    100% {
+                        stroke-dasharray: 3px 10px;
+                        stroke-dashoffset: 0px;
+                    }
+                }
+
+                .am-weather-sun-shiny line {
+                    animation-name: am-weather-sun-shiny;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+
+                @keyframes am-weather-snow {
+                    0% {
+                        transform: translateX(0) translateY(0);
+                    }
+
+                    33.33% {
+                        transform: translateX(-1.2px) translateY(2px);
+                    }
+
+                    66.66% {
+                        transform: translateX(1.4px) translateY(4px);
+                        opacity: 1;
+                    }
+
+                    100% {
+                        transform: translateX(-1.6px) translateY(6px);
+                        opacity: 0;
+                    }
+                }
+
+                .am-weather-snow-1 {
+                    animation-name: am-weather-snow;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                .am-weather-snow-2 {
+                    animation-name: am-weather-snow;
+                    animation-delay: 1.2s;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+                </style>
+            </defs>
+            <g filter="url(#blur)" id="snowy-3">
+                <g transform="translate(20,10)">
+                    <g transform="translate(0,16)">
+                        <g class="am-weather-sun">
+                            <g>
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(45)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(90)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(135)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(180)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(225)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(270)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(315)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                        </g>
+                        <circle cx="0" cy="0" fill="orange" r="5" stroke="orange" stroke-width="2" />
+                    </g>
+                    <g>
+                        <path d="M47.7,35.4c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3    c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z" fill="#57A0EE" stroke="white" stroke-linejoin="round" stroke-width="1.2" transform="translate(-20,-11)" />
+                    </g>
+                    <g class="am-weather-snow-1">
+                        <g transform="translate(7,28)">
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1.2" transform="translate(0,9), rotate(0)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(45)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(90)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(135)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                        </g>
+                    </g>
+                    <g class="am-weather-snow-2">
+                        <g transform="translate(16,28)">
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1.2" transform="translate(0,9), rotate(0)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(45)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(90)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(135)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </svg>
+        <svg class="snowy-1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewbox="0 0 64 64">
+            <defs>
+                <filter id="blur" width="200%" height="200%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                    <feOffset dx="0" dy="4" result="offsetblur" />
+                    <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.05" />
+                    </feComponentTransfer>
+                    <feMerge>
+                        <feMergeNode />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+                <style type="text/css">
+                @keyframes am-weather-sun {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+
+                    100% {
+                        transform: rotate(360deg);
+                    }
+                }
+
+                .am-weather-sun {
+                    animation-name: am-weather-sun;
+                    animation-duration: 9s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                @keyframes am-weather-sun-shiny {
+                    0% {
+                        stroke-dasharray: 3px 10px;
+                        stroke-dashoffset: 0px;
+                    }
+
+                    50% {
+                        stroke-dasharray: 0.1px 10px;
+                        stroke-dashoffset: -1px;
+                    }
+
+                    100% {
+                        stroke-dasharray: 3px 10px;
+                        stroke-dashoffset: 0px;
+                    }
+                }
+
+                .am-weather-sun-shiny line {
+                    animation-name: am-weather-sun-shiny;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+
+                @keyframes am-weather-snow {
+                    0% {
+                        transform: translateX(0) translateY(0);
+                    }
+
+                    33.33% {
+                        transform: translateX(-1.2px) translateY(2px);
+                    }
+
+                    66.66% {
+                        transform: translateX(1.4px) translateY(4px);
+                        opacity: 1;
+                    }
+
+                    100% {
+                        transform: translateX(-1.6px) translateY(6px);
+                        opacity: 0;
+                    }
+                }
+
+                .am-weather-snow-1 {
+                    animation-name: am-weather-snow;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                .am-weather-snow-2 {
+                    animation-name: am-weather-snow;
+                    animation-delay: 1.2s;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+                </style>
+            </defs>
+            <g filter="url(#blur)" id="snowy-1">
+                <g transform="translate(20,10)">
+                    <g transform="translate(0,16), scale(1.2)">
+                        <g class="am-weather-sun">
+                            <g>
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(45)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(90)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(135)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(180)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(225)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(270)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                            <g transform="rotate(315)">
+                                <line fill="none" stroke="orange" stroke-linecap="round" stroke-width="2" transform="translate(0,9)" x1="0" x2="0" y1="0" y2="3" />
+                            </g>
+                        </g>
+                        <circle cx="0" cy="0" fill="orange" r="5" stroke="orange" stroke-width="2" />
+                    </g>
+                    <g>
+                        <path d="M47.7,35.4c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3    c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z" fill="#57A0EE" stroke="white" stroke-linejoin="round" stroke-width="1.5" transform="translate(-15,-5), scale(0.85)" />
+                    </g>
+                </g>
+                <g transform="translate(20,9)">
+                    <g class="am-weather-snow-1">
+                        <g transform="translate(7,28)">
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1.2" transform="translate(0,9), rotate(0)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(45)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(90)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(135)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                        </g>
+                    </g>
+                    <g class="am-weather-snow-2">
+                        <g transform="translate(16,28)">
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1.2" transform="translate(0,9), rotate(0)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(45)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(90)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(135)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </svg>
+        <svg class="snowy-4" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewbox="0 0 64 64">
+            <defs>
+                <filter id="blur" width="200%" height="200%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                    <feOffset dx="0" dy="4" result="offsetblur" />
+                    <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.05" />
+                    </feComponentTransfer>
+                    <feMerge>
+                        <feMergeNode />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+                <style type="text/css">
+                @keyframes am-weather-snow {
+                    0% {
+                        transform: translate(0.0px, 0);
+                    }
+
+                    33.33% {
+                        transform: translate(-1.2px, 2px);
+                    }
+
+                    66.66% {
+                        transform: translate(1.4px, 4px);
+                        opacity: 1;
+                    }
+
+                    100% {
+                        transform: translate(-1.6px, 6px);
+                        opacity: 0;
+                    }
+                }
+
+                .am-weather-snow-1 {
+                    animation-name: am-weather-snow;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+                </style>
+            </defs>
+            <g filter="url(#blur)" id="snowy-4">
+                <g transform="translate(20,10)">
+                    <g>
+                        <path d="M47.7,35.4c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3    c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z" fill="#57A0EE" stroke="white" stroke-linejoin="round" stroke-width="1.2" transform="translate(-20,-11)" />
+                    </g>
+                    <g class="am-weather-snow-1">
+                        <g transform="translate(11,28)">
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1.2" transform="translate(0,9), rotate(0)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(45)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(90)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(135)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </svg>
+        <svg class="snowy-5" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewbox="0 0 64 64">
+            <defs>
+                <filter id="blur" width="200%" height="200%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                    <feOffset dx="0" dy="4" result="offsetblur" />
+                    <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.05" />
+                    </feComponentTransfer>
+                    <feMerge>
+                        <feMergeNode />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+                <style type="text/css">
+                @keyframes am-weather-cloud-2 {
+                    0% {
+                        transform: translate(0px, 0px);
+                    }
+
+                    50% {
+                        transform: translate(2px, 0px);
+                    }
+
+                    100% {
+                        transform: translate(0px, 0px);
+                    }
+                }
+
+                .am-weather-cloud-2 {
+                    animation-name: am-weather-cloud-2;
+                    animation-duration: 3s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                @keyframes am-weather-snow {
+                    0% {
+                        transform: translateX(0) translateY(0);
+                    }
+
+                    33.33% {
+                        transform: translateX(-1.2px) translateY(2px);
+                    }
+
+                    66.66% {
+                        transform: translateX(1.4px) translateY(4px);
+                        opacity: 1;
+                    }
+
+                    100% {
+                        transform: translateX(-1.6px) translateY(6px);
+                        opacity: 0;
+                    }
+                }
+
+                .am-weather-snow-1 {
+                    animation-name: am-weather-snow;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                .am-weather-snow-2 {
+                    animation-name: am-weather-snow;
+                    animation-delay: 1.2s;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+                </style>
+            </defs>
+            <g filter="url(#blur)" id="snowy-5">
+                <g transform="translate(20,10)">
+                    <g class="am-weather-cloud-2">
+                        <path d="M47.7,35.4c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3    c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z" fill="#57A0EE" stroke="white" stroke-linejoin="round" stroke-width="1.2" transform="translate(-20,-11)" />
+                    </g>
+                    <g class="am-weather-snow-1">
+                        <g transform="translate(7,28)">
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1.2" transform="translate(0,9), rotate(0)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(45)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(90)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(135)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                        </g>
+                    </g>
+                    <g class="am-weather-snow-2">
+                        <g transform="translate(16,28)">
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1.2" transform="translate(0,9), rotate(0)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(45)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(90)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(135)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </svg>
+        <svg class="snowy-6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewbox="0 0 64 64">
+            <defs>
+                <filter id="blur" width="200%" height="200%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                    <feOffset dx="0" dy="4" result="offsetblur" />
+                    <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.05" />
+                    </feComponentTransfer>
+                    <feMerge>
+                        <feMergeNode />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+                <style type="text/css">
+                @keyframes am-weather-cloud-2 {
+                    0% {
+                        transform: translate(0px, 0px);
+                    }
+
+                    50% {
+                        transform: translate(2px, 0px);
+                    }
+
+                    100% {
+                        transform: translate(0px, 0px);
+                    }
+                }
+
+                .am-weather-cloud-2 {
+                    animation-name: am-weather-cloud-2;
+                    animation-duration: 3s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+
+                @keyframes am-weather-snow {
+                    0% {
+                        transform: translateX(0) translateY(0);
+                    }
+
+                    33.33% {
+                        transform: translateX(-1.2px) translateY(2px);
+                    }
+
+                    66.66% {
+                        transform: translateX(1.4px) translateY(4px);
+                        opacity: 1;
+                    }
+
+                    100% {
+                        transform: translateX(-1.6px) translateY(6px);
+                        opacity: 0;
+                    }
+                }
+
+                @keyframes am-weather-snow-reverse {
+                    0% {
+                        transform: translateX(0) translateY(0);
+                    }
+
+                    33.33% {
+                        transform: translateX(1.2px) translateY(2px);
+                    }
+
+                    66.66% {
+                        transform: translateX(-1.4px) translateY(4px);
+                        opacity: 1;
+                    }
+
+                    100% {
+                        transform: translateX(1.6px) translateY(6px);
+                        opacity: 0;
+                    }
+                }
+
+                .am-weather-snow-1 {
+                    animation-name: am-weather-snow;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                .am-weather-snow-2 {
+                    animation-name: am-weather-snow;
+                    animation-delay: 1.2s;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                .am-weather-snow-3 {
+                    animation-name: am-weather-snow-reverse;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+                </style>
+            </defs>
+            <g filter="url(#blur)" id="snowy-6">
+                <g transform="translate(20,10)">
+                    <g class="am-weather-cloud-2">
+                        <path d="M47.7,35.4c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3    c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z" fill="#57A0EE" stroke="white" stroke-linejoin="round" stroke-width="1.2" transform="translate(-20,-11)" />
+                    </g>
+                    <g class="am-weather-snow-1">
+                        <g transform="translate(3,28)">
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1.2" transform="translate(0,9), rotate(0)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(45)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(90)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(135)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                        </g>
+                    </g>
+                    <g class="am-weather-snow-2">
+                        <g transform="translate(11,28)">
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1.2" transform="translate(0,9), rotate(0)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(45)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(90)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(135)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                        </g>
+                    </g>
+                    <g class="am-weather-snow-3">
+                        <g transform="translate(20,28)">
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1.2" transform="translate(0,9), rotate(0)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(45)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(90)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                            <line fill="none" stroke="#57A0EE" stroke-linecap="round" stroke-width="1" transform="translate(0,9), rotate(135)" x1="0" x2="0" y1="-2.5" y2="2.5" />
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </svg>
+        <svg class="thunder" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewbox="0 0 64 64">
+            <defs>
+                <filter id="blur" width="200%" height="200%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                    <feOffset dx="0" dy="4" result="offsetblur" />
+                    <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.05" />
+                    </feComponentTransfer>
+                    <feMerge>
+                        <feMergeNode />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+                <style type="text/css">
+                @keyframes am-weather-cloud-1 {
+                    0% {
+                        transform: translate(-5px, 0px);
+                    }
+
+                    50% {
+                        transform: translate(10px, 0px);
+                    }
+
+                    100% {
+                        transform: translate(-5px, 0px);
+                    }
+                }
+
+                .am-weather-cloud-1 {
+                    animation-name: am-weather-cloud-1;
+                    animation-duration: 7s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+                @keyframes am-weather-cloud-2 {
+                    0% {
+                        transform: translate(0px, 0px);
+                    }
+
+                    50% {
+                        transform: translate(2px, 0px);
+                    }
+
+                    100% {
+                        transform: translate(0px, 0px);
+                    }
+                }
+
+                .am-weather-cloud-2 {
+                    animation-name: am-weather-cloud-2;
+                    animation-duration: 3s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+
+
+                @keyframes am-weather-stroke {
+                    0% {
+                        transform: translate(0.0px, 0.0px);
+                    }
+
+                    2% {
+                        transform: translate(0.3px, 0.0px);
+                    }
+
+                    4% {
+                        transform: translate(0.0px, 0.0px);
+                    }
+
+                    6% {
+                        transform: translate(0.5px, 0.4px);
+                    }
+
+                    8% {
+                        transform: translate(0.0px, 0.0px);
+                    }
+
+                    10% {
+                        transform: translate(0.3px, 0.0px);
+                    }
+
+                    12% {
+                        transform: translate(0.0px, 0.0px);
+                    }
+
+                    14% {
+                        transform: translate(0.3px, 0.0px);
+                    }
+
+                    16% {
+                        transform: translate(0.0px, 0.0px);
+                    }
+
+                    18% {
+                        transform: translate(0.3px, 0.0px);
+                    }
+
+                    20% {
+                        transform: translate(0.0px, 0.0px);
+                    }
+
+                    22% {
+                        transform: translate(1px, 0.0px);
+                    }
+
+                    24% {
+                        transform: translate(0.0px, 0.0px);
+                    }
+
+                    26% {
+                        transform: translate(-1px, 0.0px);
+
+                    }
+
+                    28% {
+                        transform: translate(0.0px, 0.0px);
+                    }
+
+                    40% {
+                        fill: orange;
+                        transform: translate(0.0px, 0.0px);
+                    }
+
+                    65% {
+                        fill: white;
+                        transform: translate(-1px, 5.0px);
+                    }
+
+                    61% {
+                        fill: orange;
+                    }
+
+                    100% {
+                        transform: translate(0.0px, 0.0px);
+                    }
+                }
+
+                .am-weather-stroke {
+                    animation-name: am-weather-stroke;
+                    animation-duration: 1.11s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+                </style>
+            </defs>
+            <g filter="url(#blur)" id="thunder">
+                <g transform="translate(20,10)">
+                    <g class="am-weather-cloud-1">
+                        <path d="M47.7,35.4     c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3     c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z" fill="#91C0F8" stroke="white" stroke-linejoin="round" stroke-width="1.2" transform="translate(-10,-6), scale(0.6)" />
+                    </g>
+                    <g>
+                        <path d="M47.7,35.4     c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3     c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z" fill="#57A0EE" stroke="white" stroke-linejoin="round" stroke-width="1.2" transform="translate(-20,-11)" />
+                    </g>
+                    <g transform="translate(-9,28), scale(1.2)">
+                        <polygon class="am-weather-stroke" fill="orange" stroke="white" stroke-width="1" points="14.3,-2.9 20.5,-2.9 16.4,4.3 20.3,4.3 11.5,14.6 14.9,6.9 11.1,6.9" />
+                    </g>
+                </g>
+            </g>
+        </svg>
+        <svg class="fog" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 517.12 517.12" style="enable-background:new 0 0 517.12 517.12;" xml:space="preserve">
+            <rect x="5.12" y="386.484" style="fill:#629FD6;" width="296.32" height="16" />
+            <g>
+                <rect x="325.184" y="432.084" style="fill:#9ABFE2;" width="191.936" height="16" />
+                <rect x="15.624" y="432.084" style="fill:#9ABFE2;" width="191.936" height="16" />
+            </g>
+            <rect x="74.32" y="477.692" style="fill:#CDE0F1;" width="373.592" height="16" />
+            <path style="fill:#629FD6;" d="M417.44,156.348h-7.584c-7.544-31.728-36.136-55.504-70.336-55.504
+	c-8.312,0-16.728,1.832-23.696,4.152c-16.728-47.472-62.032-81.568-115.448-81.568c-67.632,0-122.456,54.544-122.456,121.84
+	c0,4.24,0.232,8.416,0.64,12.552C34.112,165.468,0,204.164,0,250.484c0,51.776,42.576,94.16,94.608,94.16H417.4
+	c52.024,0,94.6-42.36,94.6-94.16C512.04,198.732,469.472,156.348,417.44,156.348z" />
+        </svg>
+        <svg class="rain-drops" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 410.823 410.823" style="enable-background:new 0 0 410.823 410.823;" xml:space="preserve">
+            <g>
+                <g>
+                    <path d="M5.595,254.875c-17.185,46.513,6.539,98.118,53.048,115.317c46.474,17.203,98.103-6.577,115.312-53.046    c17.175-46.468-31.479-173.544-31.479-173.544S22.821,208.372,5.595,254.875z M35.054,273.141    c5.685,50.553,34.358,67.908,34.358,67.908C18.311,325.793,35.054,273.141,35.054,273.141z" fill="#57a0ee" />
+                    <path d="M395.391,259.702c0,0-52.531,28.454-60.083,48.864c-7.54,20.411,2.873,43.066,23.285,50.616    c20.399,7.535,43.06-2.884,50.614-23.278C416.761,315.505,395.391,259.702,395.391,259.702z M348.232,316.572    c2.503,22.202,15.086,29.817,15.086,29.817C340.889,339.719,348.232,316.572,348.232,316.572z" fill="#57a0ee" />
+                    <path d="M368.837,177.115c14.061-38.057-25.778-142.083-25.778-142.083s-97.944,53.086-112.03,91.106    c-14.074,38.028,5.364,80.34,43.398,94.384C312.473,234.624,354.746,215.17,368.837,177.115z M255.121,141.088    c4.663,41.38,28.137,55.596,28.137,55.596C241.416,184.205,255.121,141.088,255.121,141.088z" fill="#57a0ee" />
+                </g>
+            </g>
+        </svg>
+    </div>
+    <footer>powered by Weather Unlocked & The OpenCage, made by &copy; 2018 Yikai Guan</footer>
+</body>
+
+</html>
