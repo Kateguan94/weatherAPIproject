@@ -133,7 +133,7 @@ function weatherRequest(event) {
     // get current weather details
     $.ajax({
         type: 'GET',
-        url: 'https://api.weatherunlocked.com/api/current/' + placeCoordinates.lat + ',' + placeCoordinates.lng + '?app_id=f76fdae3&app_key=94aaf10e2ed7c46bfaecf7320cf64861',
+        url: 'http://api.weatherunlocked.com/api/current/' + placeCoordinates.lat + ',' + placeCoordinates.lng + '?app_id=f76fdae3&app_key=94aaf10e2ed7c46bfaecf7320cf64861',
         headers: {
             "Accept": "application/json"
         }
@@ -144,7 +144,7 @@ function weatherRequest(event) {
 
     $.ajax({
             type: 'GET',
-            url: 'https://api.weatherunlocked.com/api/forecast/' + placeCoordinates.lat + ',' + placeCoordinates.lng + '?app_id=f76fdae3&app_key=94aaf10e2ed7c46bfaecf7320cf64861',
+            url: 'http://api.weatherunlocked.com/api/forecast/' + placeCoordinates.lat + ',' + placeCoordinates.lng + '?app_id=f76fdae3&app_key=94aaf10e2ed7c46bfaecf7320cf64861',
             headers: {
                 "Accept": "application/json"
             }
